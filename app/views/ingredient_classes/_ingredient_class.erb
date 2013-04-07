@@ -1,0 +1,26 @@
+<div id="class-images-<%= ingredient_class.id %>" class="modal" style="display: none;">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&#215;</a>
+    <h3>Images</h3>
+  </div>
+  <div align="justify">
+    &nbsp;<%= link_to "Image1", "javascript:void(0)", {image_id: "1", class: "image-link"} if ingredient_class.avatar1? %>
+    &nbsp;<%= link_to "Image2", "javascript:void(0)", {image_id: "2", class: "image-link"} if ingredient_class.avatar2? %>
+    &nbsp;<%= link_to "Image3", "javascript:void(0)", {image_id: "3", class: "image-link"} if ingredient_class.avatar3? %>
+  </div>
+  <% if ingredient_class.avatar1? %>
+    <div id="outer-image1" class="outer-image">
+      <%= generate_image_data(ingredient_class_path(ingredient_class), ingredient_class, 1) %>
+    </div>
+  <% end %>
+  <% if ingredient_class.avatar2? %>
+  <div id="outer-image2" class="outer-image" style = "<%= ingredient_class.avatar1? ? "display:none;" : "display:block;"%>" >
+      <%= generate_image_data(ingredient_class_path(ingredient_class), ingredient_class, 2) %>
+    </div>
+  <% end %>
+  <% if ingredient_class.avatar3? %>
+    <div id="outer-image3" class="outer-image" style = "<%= ingredient_class.avatar1? || ingredient_class.avatar2? ? "display:none;" : "display:block;"%>" >
+      <%= generate_image_data(ingredient_class_path(ingredient_class), ingredient_class, 3) %>
+    </div>
+  <% end %>
+</div>

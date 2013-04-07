@@ -1,0 +1,6 @@
+<%= simple_form_for(skin_hair_type, html: {class: 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :skin_hair_type, autofocus: true, required: true %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to "Cancel", skin_hair_types_path %>
+<% end %>

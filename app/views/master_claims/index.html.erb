@@ -1,0 +1,28 @@
+<div align="right">
+  <%= generate_common_links({index_path: master_claims_path(request.parameters.merge({format: :xls})), create_path: new_master_claim_path, object: @master_claims, create_text: "Add New Master Claim" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: master_claims_path, placeholder: params[:search] ? params[:search] : "Search Master Claims" }) %>
+</div>
+<fieldset>
+  <legend> Master Claims List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Sub Claims</th>
+        <th>Problem Solutions</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render "master_claims", master_claims: @master_claims %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@master_claims.size, 'master claim') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @master_claims %>
+</fieldset>

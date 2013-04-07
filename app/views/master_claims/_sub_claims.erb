@@ -1,0 +1,2 @@
+<%= label_tag "Sub claims" %>
+<%= collection_select :additional_claim, :sub_claim_ids, sub_claims, :id, :name, {}, {multiple: true} %>

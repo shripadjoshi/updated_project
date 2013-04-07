@@ -1,0 +1,12 @@
+<% master_claims.each do |master_claim| %>
+<tr>
+ <td width="20%"><%= master_claim.name %></td>
+ <td width="30%"><%= master_claim.sub_claims.collect(&:name).sort.join(", ") %></td>
+ <td width="25%"><%= master_claim.problem_solutions.collect(&:problem).sort.join(", ") %></td>
+ <td width="25%">
+  <%= generate_edit_delete_link({object: master_claim, path_value: edit_master_claim_path(master_claim)}) %>
+  <a data-toggle="modal" href="#master-claim-image-<%= master_claim.id %>" class="btn" type="button">Image</a>
+  <%= render master_claim %>
+ </td>
+</tr>
+<% end %>

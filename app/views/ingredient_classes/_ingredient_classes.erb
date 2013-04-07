@@ -1,0 +1,13 @@
+<% ingredient_classes.each do |ingredient_class| %>
+<tr>
+ <td width="30%"><%= ingredient_class.class_name %></td>
+ <td width="30%"><%= ingredient_class.class_definition %></td>
+ <td width="25%">
+  <%= generate_edit_delete_link({object: ingredient_class, path_value: edit_ingredient_class_path(ingredient_class)}) %>
+  <% if ingredient_class.images? %>
+    <a data-toggle="modal" href="#class-images-<%= ingredient_class.id %>" class="btn" type="button">Images</a>
+    <%= render ingredient_class %>
+  <% end %>
+ </td>
+</tr>
+<% end %>

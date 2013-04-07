@@ -1,0 +1,13 @@
+<fieldset>
+  <legend> Create User </legend>
+  <%= simple_form_for(@user, html: {class: 'form-vertical' }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name, autofocus: true %>
+    <%= f.input :email, required: true %>
+    <%= f.input :password, required: true %>
+    <%= f.input :password_confirmation, required: true %>
+    <%= f.input :account_active, required: true %>
+    <%= f.button :submit, 'Create', class: 'btn-primary' %>
+    <%= link_to "Cancel", users_path %>
+  <% end %>
+</fieldset>

@@ -1,0 +1,6 @@
+<%= simple_form_for(product_type, html: {class: 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, autofocus: true, required: true %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to "Cancel", product_types_path %>
+<% end %>

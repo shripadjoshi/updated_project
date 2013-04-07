@@ -1,0 +1,26 @@
+<div id="product-description" class="modal" style="display: none;">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&#215;</a>
+    <h3>Product Description</h3>
+  </div>
+  <div class="modal-body">
+    <p>
+      <b> Full name </b> - <%= product.full_name %>
+    </p>
+    <p>
+      <b> Brand </b> - <%= product.brand_name %>
+    </p>
+    <p>
+      <b> Type </b> - <%= product.product_type_name %>
+    </p>
+    <p>
+      <b> Ingredients </b> - <%= product.ingredients %>
+    </p>
+    <p>
+      <b> Application Direction </b> - <%= product.application_direction %>
+    </p>    
+  </div>
+  <div class="modal-footer">
+    <a class="btn" data-dismiss="modal" href="#">Close</a>
+  </div>
+</div>

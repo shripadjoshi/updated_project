@@ -1,0 +1,13 @@
+<%= simple_form_for(ingredient_class, html: {class: 'form-vertical', multipart: true }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :class_name, autofocus: true, required: true %>
+  <%= label_tag "Image1" %>
+  <%= f.file_field :avatar1 %><br/><br/>
+  <%= label_tag "Image2" %>
+  <%= f.file_field :avatar2 %><br/><br/>
+  <%= label_tag "Image3" %>
+  <%= f.file_field :avatar3 %><br/><br/>
+  <%= f.input :class_definition %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to "Cancel", ingredient_classes_path %>
+<% end %>

@@ -1,0 +1,28 @@
+  <div id="master-claim-image-<%= master_claim.id %>" class="modal" style="display: none;">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>View/Update Image</h3>
+    </div>
+    <div class="modal-body">
+      <% if master_claim.avatar1? %>
+        <div align="right">
+          <%= simple_form_for master_claim, url: master_claim_path(master_claim), html: {method: :put, class: 'form-horizontal', id: "remove_image_form" } do |f| %>
+            <%= link_to "Want to remove the image?", "javascript:void(0)", {class: "remove_image"} %>
+            <%= hidden_field_tag :remove_image, "true" %>
+          <% end %>
+        </div>
+        <b><%= master_claim.avatar1.file.filename %></b><br/>
+        <%= image_tag master_claim.avatar1_url(:medium) %><br/>
+      <% else %>
+        <center>No image present</center>
+      <% end %>
+     </div>
+     <h4>Add New/Update Image</h4>
+     <div class="modal-footer">
+        <%= simple_form_for master_claim, url: master_claim_path(master_claim), html: {method: :put, class: 'form-horizontal' } do |f| %>
+          <%= f.file_field :avatar1 %><br/><br/>
+          <%= f.submit "Add Image", class: "btn" %>
+          <a class="btn" data-dismiss="modal" href="#">Close</a>
+         <% end %>
+    </div>
+  </div>

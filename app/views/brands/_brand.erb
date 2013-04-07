@@ -1,0 +1,8 @@
+<tr>
+ <td width="30%"><%= brand.name %></td>
+ <td width="30%"><%= brand.master_claims.collect(&:name).join(", ") %></td>
+ <td width="15%"><%= brand.round_name %></td>
+ <td width="25%">
+   <%= generate_edit_delete_link({object: brand, path_value: edit_brand_path(brand)}) %>
+ </td>
+</tr>

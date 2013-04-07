@@ -1,0 +1,26 @@
+<div align="right">
+  <%= generate_common_links({index_path: type_of_studies_path(request.parameters.merge({format: :xls})), create_path: new_type_of_study_path, object: @type_of_studies, create_text: "Add New Type Of Study" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: type_of_studies_path, placeholder: params[:search] ? params[:search] : "Search Type Of Studies" }) %>
+</div>
+<fieldset>
+  <legend> Type Of Studies List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @type_of_studies %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@type_of_studies.size, 'type of study') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @type_of_studies %>
+</fieldset>

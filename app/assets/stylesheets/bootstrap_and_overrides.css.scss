@@ -1,0 +1,5 @@
+@import "bootstrap";
+body { padding-top: 60px; }
+.table-condensed tr{border-bottom:1px solid #DDDDDD;}
+.table-condensed tfoot tr{border-bottom:0px solid #DDDDDD;}
+@import "bootstrap-responsive";

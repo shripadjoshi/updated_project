@@ -1,0 +1,28 @@
+<div align="right">
+  <%= generate_common_links({index_path: brands_path(request.parameters.merge({format: :xls})), create_path: new_brand_path, object: @brands, create_text: "Add New Brand" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: brands_path, placeholder: params[:search] ? params[:search] : "Search Brands" }) %>
+</div>
+<fieldset>
+  <legend> Brands List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Additional Claims</th>
+        <th>Round</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @brands %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4"><%= pluralize(@brands.size, 'brand') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @brands %>
+</fieldset>

@@ -1,0 +1,26 @@
+<div align="right">
+  <%= generate_common_links({index_path: skin_hair_types_path(request.parameters.merge({format: :xls})), create_path: new_skin_hair_type_path, object: @skin_hair_types, create_text: "Add New Skin Hair Type" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: skin_hair_types_path, placeholder: params[:search] ? params[:search] : "Search Skin Hair Types" }) %>
+</div>
+<fieldset>
+  <legend> Skin Hair Types List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Skin/Hair Type</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @skin_hair_types %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@skin_hair_types.size, 'skin/hair type') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @skin_hair_types %>
+</fieldset>

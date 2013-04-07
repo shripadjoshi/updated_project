@@ -1,0 +1,26 @@
+<div align="right">
+  <%= generate_common_links({index_path: formulations_path(request.parameters.merge({format: :xls})), create_path: new_formulation_path, object: @formulations, create_text: "Add New Formulation" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: formulations_path, placeholder: params[:search] ? params[:search] : "Search Formulations" }) %>
+</div>
+<fieldset>
+  <legend> Formulations List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Formulation</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @formulations %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@formulations.size, 'formulation') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @formulations %>
+</fieldset>

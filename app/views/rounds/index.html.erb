@@ -1,0 +1,26 @@
+<div align="right">
+  <%= generate_common_links({index_path: rounds_path(request.parameters.merge({format: :xls})), create_path: new_round_path, object: @rounds, create_text: "Add New Round" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: rounds_path, placeholder: params[:search] ? params[:search] : "Search Rounds" }) %>
+</div>
+<fieldset>
+  <legend> Rounds List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Round</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @rounds %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@rounds.size, 'round') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @rounds %>
+</fieldset>

@@ -1,0 +1,14 @@
+<% ingredients.each do |ingredient| %>
+<tr>
+ <td width="30%"><%= ingredient.ingredient %></td>
+ <td width="15%"><%= ingredient.latin_name %></td>
+ <td width="30%"><%= ingredient.ingredient_definition %></td>
+ <td width="25%">
+  <%= generate_edit_delete_link({object: ingredient, path_value: edit_ingredient_path(ingredient)}) %>
+  <% if ingredient.images? %>
+   <a data-toggle="modal" href="#ingredient-images-<%= ingredient.id %>" class="btn" type="button">Images</a>
+    <%= render ingredient %>
+  <% end %>
+ </td>
+</tr>
+<% end %>

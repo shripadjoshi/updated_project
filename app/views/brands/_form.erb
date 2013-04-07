@@ -1,0 +1,8 @@
+<%= simple_form_for(brand, html: {class: 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, autofocus: true, required: true %>
+  <%= f.association :master_claims, label: 'Additinal Claims' %>
+  <%= f.association :round, label_method: :round_name, value_method: :id, prompt: "Choose a Round", include_blank: true %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to "Cancel", brands_path %>
+<% end %>

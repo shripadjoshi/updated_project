@@ -1,0 +1,16 @@
+<%= simple_form_for([product, additional_claim], html: {class: 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <% if (additional_claim.assignee_name.eql?(current_user.name)) || (current_user.has_role? :admin)%>
+    <%= render partial: "admin_form", locals: {f: f, sub_claims: sub_claims, additional_claim: additional_claim, assignees: assignees} %>
+  <% elsif current_user.has_role? :editor %>
+    fgdfg
+  <% elsif additional_claim.research_status.eql?("Unassigned") %>
+    <%= render partial: "chemist_unassigned_form", locals: {f: f, additional_claim: additional_claim} %>
+  <% end %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to "Cancel", product_additional_claims_path(product) %>
+  <%= tinymce %>
+<% end %>
+<script>
+  change_assignee_label();
+</script>

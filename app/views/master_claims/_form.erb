@@ -1,0 +1,10 @@
+<%= simple_form_for(master_claim, html: {class: 'form-vertical', multipart: true }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, autofocus: true, required: true %>
+  <%= label_tag "Image" %>
+  <%= f.file_field :avatar1 %><br/><br/>
+  <%= f.association :sub_claims %>
+  <%= f.association :problem_solutions, label_method: :problem, value_method: :id %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to "Cancel", master_claims_path %>
+<% end %>

@@ -1,0 +1,29 @@
+<div align="right">
+  <%= generate_common_links({index_path: products_path(request.parameters.merge({format: :xls})), create_path: new_product_path, object: @products, create_text: "Add New Product" }) if current_user.has_role? :admin %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: products_path, placeholder: params[:search] ? params[:search] : "Search Products" }) %>
+</div>
+<fieldset>
+  <legend> Products List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>SKU</th>
+        <th>Price</th>
+        <th>Ingredients</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @products %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@products.size, 'product') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @products %>
+</fieldset>

@@ -1,0 +1,27 @@
+<div align="right">
+  <%= generate_common_links({index_path: ingredient_classes_path(request.parameters.merge({format: :xls})), create_path: new_ingredient_class_path, object: @ingredient_classes, create_text: "Add New Ingredient Class" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: ingredient_classes_path, placeholder: params[:search] ? params[:search] : "Search Ingredient Classes" }) %>
+</div>
+<fieldset>
+  <legend> Ingredient Classes List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Ingredient Class Name</th>
+        <th>Ingredient Class Definition</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render "ingredient_classes", ingredient_classes: @ingredient_classes %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@ingredient_classes.size, 'ingredient class') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @ingredient_classes %>
+</fieldset>

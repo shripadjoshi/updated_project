@@ -1,0 +1,26 @@
+<div align="right">
+  <%= generate_common_links({index_path: sub_claims_path(request.parameters.merge({format: :xls})), create_path: new_sub_claim_path, object: @sub_claims, create_text: "Add New Sub Claim" }) %>
+</div>
+<div align="left">
+  <%= generate_search_form({index_path: sub_claims_path, placeholder: params[:search] ? params[:search] : "Search Sub Claims" }) %>
+</div>
+<fieldset>
+  <legend> Sub Claims List</legend>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th data-sorter="false">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @sub_claims %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= pluralize(@sub_claims.size, 'sub claim') %></td>
+      </tr>
+    </tfoot>
+  </table>
+  <%= will_paginate @sub_claims %>
+</fieldset>

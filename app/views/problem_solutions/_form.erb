@@ -1,0 +1,6 @@
+<%= simple_form_for(problem_solution, html: {class: 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :problem, autofocus: true, required: true %>
+  <%= f.button :submit, class: 'btn-primary' %>
+  <%= link_to "Cancel", problem_solutions_path %>
+<% end %>

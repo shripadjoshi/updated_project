@@ -1,0 +1,13 @@
+<fieldset>
+  <legend> Edit User </legend>
+  <%= simple_form_for(@user, html: {class: 'form-vertical' }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name, autofocus: true %>
+    <%= f.input :email, required: true %>
+    <%= f.input :password, hint: "leave it blank if you don't want to change it", required: false %>
+    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :account_active, required: true %>
+    <%= f.button :submit, 'Update', class: 'btn-primary' %>
+    <%= link_to "Cancel", users_path %>
+  <% end %>
+</fieldset>
