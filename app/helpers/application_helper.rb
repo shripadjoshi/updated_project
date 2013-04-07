@@ -61,5 +61,19 @@ module ApplicationHelper
  def options_for_research_status
    return (['Unassigned', 'Assigned', 'On-Hold', 'In-Review', 'Completed'])
  end
+
+ def resource_name
+   :user
+ end
+
+ def resource
+  @resource ||= User.new
+ end
+
+ def devise_mapping
+  @devise_mapping ||= Devise.mappings[:user]
+ end
+
+
  
 end

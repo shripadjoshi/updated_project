@@ -1,7 +1,7 @@
 Claims::Application.routes.draw do
 
   authenticated :user do
-    root to: 'home#index'
+    root to: 'users#index'
   end
   root to: "home#index"
   devise_for :users, path_prefix: 'd'
