@@ -40,7 +40,7 @@ module ApplicationHelper
       end
     #end
       end +
-    content_tag(:h4, "Add New/Update Image") +
+    content_tag(:h4, "Update Image") +
     content_tag(:div, class: "modal-footer" ) do
         simple_form_for object, url: path_val, html: {method: :put, class: 'form-horizontal' } do |f|
           if image_no == 1

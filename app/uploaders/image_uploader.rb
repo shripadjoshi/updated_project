@@ -3,12 +3,12 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-#   include CarrierWave::RMagick
-#  # include CarrierWave::MiniMagick
+   include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
 #
 #  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-#  include Sprockets::Helpers::RailsHelper
-#  include Sprockets::Helpers::IsolatedHelper
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -46,13 +46,13 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-#  version :thumb do
-#    process :resize_to_fill => [50, 50]
-#  end
-#
-#  version :medium do
-#    process :resize_to_fill => [350, 350]
-#  end
+  version :thumb do
+    process resize_to_fill: [50, 50]
+  end
+
+  version :medium do
+    process resize_to_fill: [350, 350]
+  end
 #
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
