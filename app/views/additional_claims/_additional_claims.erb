@@ -4,6 +4,8 @@
     <td><%= additional_claim.claim_type %></td>
     <td><%= additional_claim.research_status %></td>
     <td><%= additional_claim.assignee_name %></td>
+    <td><%= additional_claim.copy_status %></td>
+    <td><%= additional_claim.editor_name %></td>
     <td><%= additional_claim.updated_at.to_s(:full_friendly) %></td>
     <td>
       <%= link_to "View Claim", product_additional_claim_path(product, additional_claim), class: 'btn btn-min btn-primary' %>

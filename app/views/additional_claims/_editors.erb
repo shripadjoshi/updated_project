@@ -1,0 +1,6 @@
+<div class="control-group select optional">
+ <label for="additional_claim_editor" class="select optional control-label"> Editor </label>
+ <div class="controls">
+  <%= collection_select :additional_claim, :copy_assigned_to, editors, :id, :name, {include_blank: true, prompt: "Please select editor"}, {class: "select optional editor_users_list"} %>
+ </div>
+</div>

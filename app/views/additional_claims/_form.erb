@@ -1,7 +1,7 @@
 <%= simple_form_for([product, additional_claim], html: {class: 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <% if (additional_claim.assignee_name.eql?(current_user.name)) || (current_user.has_role? :admin) || !additional_claim.research_status.eql?("Unassigned")%>
-    <%= render partial: "admin_form", locals: {f: f, sub_claims: sub_claims, additional_claim: additional_claim, assignees: assignees} %>
+    <%= render partial: "admin_form", locals: {f: f, sub_claims: sub_claims, additional_claim: additional_claim, assignees: assignees, editors: editors} %>
   <% elsif current_user.has_role? :editor %>
     fgdfg
   <% elsif additional_claim.research_status.eql?("Unassigned") %>
@@ -12,5 +12,6 @@
   <%= tinymce %>
 <% end %>
 <script>
-  change_assignee_label();
+  change_user_label($(".users_list"),$(".status-list"),'Assignee');
+  change_user_label($(".editor_users_list"),$(".copy-status-list"),'Editor');
 </script>

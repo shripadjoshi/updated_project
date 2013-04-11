@@ -17,6 +17,7 @@ class AdditionalClaimsController < ApplicationController
     @additional_claim  = @product.additional_claims.new
     @sub_claims        = []
     @assignees         = User.admins
+    @editors           = User.admins_and_editors
   end
 
   def create
@@ -29,6 +30,7 @@ class AdditionalClaimsController < ApplicationController
       else
         @sub_claims        = []
         @assignees         = params[:additional_claim][:claim_type].eql?("Additional Claim-Admin") ?  User.admins : User.all_users
+        @editors           = User.admins_and_editors
         format.html { render "new" }
         format.json { render json: @additional_claim.errors, status: :unprocessable_entity }
       end
@@ -89,6 +91,7 @@ class AdditionalClaimsController < ApplicationController
     @sub_claims        = @additional_claim.sub_claims
     @assignees         = User.admins if @additional_claim.claim_type.eql?("Additional Claim-Admin")
     @assignees         = User.all_users if @additional_claim.claim_type.eql?("Additional Claim-Chemist")
+    @editors           = User.admins_and_editors
   end
 
 end

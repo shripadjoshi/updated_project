@@ -11,6 +11,7 @@ class AdditionalClaim < ActiveRecord::Base
   delegate :name, to: :assignee, allow_nil: true, prefix: true
 
   belongs_to :editor, class_name: "User", foreign_key: "copy_assigned_to"
+  delegate :name, to: :editor, allow_nil: true, prefix: true
 
   has_many :additional_claim_sub_claims, dependent: :destroy
   has_many :sub_claims, through: :additional_claim_sub_claims
@@ -18,8 +19,10 @@ class AdditionalClaim < ActiveRecord::Base
   validates :master_claim_id, :claim_type, :research_status, presence: true
   validates :assigned_to, presence: true, if: :status_other_then_unassigned?
   validate :status_is_unassigned
+  validates :copy_assigned_to, presence: true, if: :copy_status_other_then_unassigned?
+  validate :copy_status_is_unassigned
 
-  scope :include_associated_classes, include: [:sub_claims, :master_claim, :assignee]
+  scope :include_associated_classes, include: [:sub_claims, :master_claim, :assignee, :editor]
   scope :fetch_chemist_type_claims, where("claim_type = ?", 'Additional Claim-Chemist')
   #scope :paginate_data, lambda{|page_no| paginate(page: page_no, per_page: 1)}
 
@@ -52,6 +55,16 @@ class AdditionalClaim < ActiveRecord::Base
     if self.assigned_to.present? && self.research_status.eql?("Unassigned")
       errors.add(:research_status, "can't assigned to unassigned additional claim")
     end
-  end  
+  end
+
+  def copy_status_other_then_unassigned?
+    !self.copy_status.eql?("Unassigned")
+  end
+
+  def copy_status_is_unassigned
+    if self.copy_assigned_to.present? && self.copy_status.eql?("Unassigned")
+      errors.add(:copy_status, "can't assigned to unassigned additional claim")
+    end
+  end
 
 end
