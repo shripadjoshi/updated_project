@@ -71,7 +71,7 @@ class AdditionalClaimsController < ApplicationController
 
   def users
     @assignees        = User.admins if params[:claim_type].eql?("Additional Claim-Admin")
-    @assignees        = User.all_users if params[:claim_type].eql?("Additional Claim-Chemist")    
+    @assignees        = User.all_users if params[:claim_type].eql?("Additional Claim-Chemist")
   end
 
   private

@@ -103,10 +103,12 @@ function change_assignee_label()
         $(".users_list").parent().prev().remove();
         $(".users_list").parent().parent().prepend("<label for='additional_claim_assigned_to' class='select required control-label'><abbr title='required'>*</abbr> Assignee </label>")
     }
-    if(($(".alert").length == 1) && $(".status-list").val() != "Unassigned")
+    if(($(".alert").length == 1) && $(".status-list").val() != "Unassigned" && $(".users_list").val() == "" )
     {
-        $(".users_list").parent().parent().addClass("error");
-        $(".users_list").parent().append("<span class='help-inline'>can't be blank</span>");
+        if($(".users_list").parent().parent().hasClass("error")== false){
+            $(".users_list").parent().parent().addClass("error");
+            $(".users_list").parent().append("<span class='help-inline'>can't be blank</span>");
+        }
     }
     else{
         $(".users_list").parent().parent().removeClass("error");

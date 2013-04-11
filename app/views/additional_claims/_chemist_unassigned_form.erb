@@ -1,2 +1,2 @@
-<%= f.input :research_status, collection: (options_for_research_status), required: true, input_html: { class: "status-list" } %>
+<%= f.input :research_status, collection: (options_for_research_status), required: true, include_blank: false, input_html: { class: "status-list" } %>
 <%= hidden_field_tag "additional_claim[assigned_to]", current_user.id %>

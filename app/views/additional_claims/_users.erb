@@ -1,7 +1,7 @@
 <div class="control-group select optional">
  <label for="additional_claim_assignee" class="select optional control-label"> Assignee </label>
  <div class="controls">
-  <%= collection_select :additional_claim, :assigned_to, assignees, :id, :name, {include_blank: true, prompt: "Please select assignee"}, {class: "select optional users_list"} if current_user.has_role? :admin%>
-  <%= collection_select :additional_claim, :assigned_to, assignees.select{|assignee| assignee.eql?(current_user)}, :id, :name, {include_blank: true, prompt: "Please select assignee"}, {class: "select optional users_list"} if current_user.has_role? :chemist %>
+  <%= collection_select :additional_claim, :assigned_to, current_user.has_role?(:admin) ?
+    assignees : assignees.select{|assignee| assignee.eql?(current_user)}, :id, :name, {include_blank: true, prompt: "Please select assignee"}, {class: "select optional users_list"} %>
  </div>
 </div>

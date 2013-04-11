@@ -1,13 +1,13 @@
 Claims::Application.routes.draw do
 
   authenticated :user do
-    root to: 'users#index'
+    root to: 'products#index'
   end
   root to: "home#index"
   devise_for :users, path_prefix: 'd'
   devise_scope :user do
-    get "d/users/sign_in" => "users/sessions#new",      :as => :new_user_session
-    get "d/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+    get "d/users/sign_in" => "users/sessions#new",      as: :new_user_session
+    get "d/users/sign_out" => "devise/sessions#destroy", as: :destroy_user_session
   end
   resources :users, except: [:show, :destroy] do
     put 'status', on: :member

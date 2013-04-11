@@ -14,11 +14,11 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :name, :email, uniqueness: {case_sensitive: false}
   scope :include_user_roles, include: [:roles]
-  scope :all_users, self.all
-  scope :admins, self.all.select{|user| user.name if user.has_role? :admin}
-  scope :chemists, self.all.select{|user| user.name if user.has_role? :chemist}
-  scope :editors, self.all.select{|user| user.name if user.has_role? :editor}
-  scope :alphabetical, where(order(:name))
+  scope :alphabetical, self.order(:name)
+  scope :all_users, self.alphabetical
+  scope :admins, self.alphabetical.select{|user| user.name if user.has_role? :admin}
+  scope :chemists, self.alphabetical.select{|user| user.name if user.has_role? :chemist}
+  scope :editors, self.alphabetical.select{|user| user.name if user.has_role? :editor}  
 
   def user_roles
     #return self.roles.first.name.capitalize
