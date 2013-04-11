@@ -58,8 +58,32 @@ module ApplicationHelper
     end
   end
 
- def options_for_research_status
-   return (['Unassigned', 'Assigned', 'On-Hold', 'In-Review', 'Completed'])
+ def allowed_status(claim, user)
+  if user.has_role?(:admin)
+    return (["Unassigned", "Assigned", "On-Hold", "In-Review", "Completed"])
+  else
+    if claim.research_status.eql?("Unassigned")
+      return (["Unassigned", "Assigned"])
+    elsif claim.research_status.eql?("Completed")
+      return (["Completed"])
+    else
+      return (["Assigned", "On-Hold", "In-Review"])
+    end
+  end
+ end
+ 
+ def allowed_copy_status(claim, user)
+  if user.has_role?(:admin)
+    return (["Unassigned", "Assigned", "On-Hold", "In-Review", "Completed"])
+  else
+    if claim.copy_status.eql?("Unassigned")
+      return (["Unassigned", "Assigned"])
+    elsif claim.copy_status.eql?("Completed")
+      return (["Completed"])
+    else
+      return (["Assigned", "On-Hold", "In-Review"])
+    end
+  end
  end
 
  def resource_name

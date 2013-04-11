@@ -3,12 +3,12 @@
 <% selected = params[:additional_claim].present? ? params[:additional_claim][:claim_type] : (additional_claim.blank? ? "Additional Claim-Admin" : additional_claim.claim_type)  %>
 <%= f.input :claim_type, collection: (['Additional Claim-Admin', 'Additional Claim-Chemist']), selected: selected , required: true %>
 <% selected = params[:additional_claim].present? ? params[:additional_claim][:research_status] : (additional_claim.blank? ? "Unasssigned" : additional_claim.research_status)  %>
-<%= f.input :research_status, collection: (options_for_research_status), selected: selected, required: true, input_html: { class: "status-list" } %>
+<%= f.input :research_status, collection: (allowed_status(additional_claim, current_user)), selected: selected, required: true, input_html: { class: "status-list" } %>
 <div id="assignee_users">
-  <%= render "users", assignees: assignees, claim: @additional_claim %>
+  <%= render "users", assignees: assignees, claim: additional_claim %>
 </div>
 <% selected = params[:additional_claim].present? ? params[:additional_claim][:copy_status] : (additional_claim.blank? ? "Unasssigned" : additional_claim.copy_status)  %>
-<%= f.input :copy_status, collection: (options_for_research_status), selected: selected, required: true, input_html: { class: "copy-status-list" } %>
+<%= f.input :copy_status, collection: (allowed_copy_status(additional_claim, current_user)), selected: selected, required: true, input_html: { class: "copy-status-list" } %>
 <div id="editor_users">
   <%= render "editors", editors: editors %>
 </div>
