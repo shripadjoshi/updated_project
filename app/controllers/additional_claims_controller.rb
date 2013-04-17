@@ -61,7 +61,8 @@ class AdditionalClaimsController < ApplicationController
   end
 
   def show
-    @additional_claim  = AdditionalClaim.find(params[:id])    
+    @additional_claim  = AdditionalClaim.find(params[:id])
+    @product = @additional_claim.product
   end
 
   def destroy
@@ -88,7 +89,7 @@ class AdditionalClaimsController < ApplicationController
   end
 
   def collected_instancese
-    @sub_claims        = @additional_claim.sub_claims
+    @sub_claims        = @additional_claim.master_claim.sub_claims
     @assignees         = User.admins if @additional_claim.claim_type.eql?("Additional Claim-Admin")
     @assignees         = User.all_users if @additional_claim.claim_type.eql?("Additional Claim-Chemist")
     @editors           = User.admins_and_editors

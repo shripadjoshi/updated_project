@@ -1,1 +1,40 @@
-<%= @additional_claim.master_claim_name.capitalize %> / <%= @additional_claim.sub_claims.collect(&:name).join(", ") %>
+<div align="right">
+  <% if accessibility_conditions(@additional_claim) %>
+    <%= link_to "Edit", edit_product_additional_claim_path(@product, @additional_claim), class: 'btn btn-min btn-primary' %>
+  <% end %>
+  <%= link_to "Delete", product_additional_claim_path(@product, @additional_claim), method: "DELETE", confirm: "Are you sure?", class: 'btn btn-min btn-primary' if current_user.has_role? :admin %>
+</div>
+<h4> Additional Claim Details </h4>
+<%= render "shared/product_description", product: @product %>
+<table class="table table-condensed">    
+  <tbody>
+    <tr>
+      <th> Product </th>
+      <td> <a data-toggle="modal" href="#product-description"><%= @product.name.capitalize %></a> </td>
+    </tr>
+    <tr>
+      <th> Claim / Sub-claim </th>
+      <td> <%= @additional_claim.master_claim_name.capitalize %> / <%= @additional_claim.sub_claims.collect(&:name).join(", ") %> </td>
+    </tr>
+    <tr>
+      <th> Research Status </th>
+      <td> <%= @additional_claim.research_status %> </td>
+    </tr>
+    <tr>
+      <th> Assignee </th>
+      <td> <%= @additional_claim.assignee_name %> </td>
+    </tr>
+    <tr>
+      <th> Copy Status </th>
+      <td> <%= @additional_claim.copy_status %> </td>
+    </tr>
+    <tr>
+      <th> Editor </th>
+      <td> <%= @additional_claim.editor_name %> </td>
+    </tr>
+    <tr>
+      <th> Modified at </th>
+      <td> <%= @additional_claim.updated_at.to_s(:full_friendly) %> </td>
+    </tr>
+  </tbody>
+</table>
