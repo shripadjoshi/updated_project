@@ -15,9 +15,9 @@ module ApplicationHelper
 
   def generate_edit_delete_link(hash)
    html = ""
-   html += link_to('Edit', hash[:path_value], class: 'btn btn-min btn-primary')
+   html += link_to('Edit', hash[:path_value], class: 'btn btn-min btn-primary btn-success')
    html += "&nbsp;"
-   html += link_to('Delete', hash[:object], method: "Delete", confirm: "Are you sure?", class: 'btn btn-min btn-primary')
+   html += link_to('Delete', hash[:object], method: "Delete", confirm: "Are you sure?", class: 'btn btn-min btn-primary btn-danger')
    return html.html_safe
   end
 

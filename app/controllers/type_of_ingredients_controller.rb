@@ -46,7 +46,6 @@ class TypeOfIngredientsController < ApplicationController
     end
   end
 
-
   def destroy
     ######TODO need to write the condition for delete
     @type_of_ingredient = TypeOfIngredient.find(params[:id])
