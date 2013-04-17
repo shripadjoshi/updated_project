@@ -31,6 +31,7 @@ Claims::Application.routes.draw do
   resources :skin_hair_types, except: [:show]
   resources :formulations, except: [:show]
   resources :rounds, except: [:show]
+  resources :type_of_ingredients, except: [:show]
   resources :products, except: [:show] do
     resources :additional_claims do
       collection do

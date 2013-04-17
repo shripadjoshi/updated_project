@@ -3,6 +3,7 @@
     <%= link_to "Edit", edit_product_additional_claim_path(@product, @additional_claim), class: 'btn btn-min btn-primary' %>
   <% end %>
   <%= link_to "Delete", product_additional_claim_path(@product, @additional_claim), method: "DELETE", confirm: "Are you sure?", class: 'btn btn-min btn-primary' if current_user.has_role? :admin %>
+  <%= link_to "Back", product_additional_claims_path(@product), class: 'btn btn-min btn-primary'%>
 </div>
 <h4> Additional Claim Details </h4>
 <%= render "shared/product_description", product: @product %>

@@ -44,6 +44,7 @@ class TypeOfStudiesController < ApplicationController
   end
 
   def destroy
+    ###TODO Need to write the condition for delete
     @type_of_study = TypeOfStudy.find(params[:id])
     @type_of_study.destroy
     respond_to do |format|
