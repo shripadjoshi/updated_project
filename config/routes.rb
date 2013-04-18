@@ -32,6 +32,7 @@ Claims::Application.routes.draw do
   resources :formulations, except: [:show]
   resources :rounds, except: [:show]
   resources :type_of_ingredients, except: [:show]
+  resources :article_types, except: [:show]
   resources :products, except: [:show] do
     resources :additional_claims do
       collection do

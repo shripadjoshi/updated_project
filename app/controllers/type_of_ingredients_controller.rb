@@ -52,7 +52,7 @@ class TypeOfIngredientsController < ApplicationController
     @type_of_ingredient.destroy
 
     respond_to do |format|
-      format.html { redirect_to type_of_ingredients_url }
+      format.html { redirect_to type_of_ingredients_url, notice: 'Type of ingredient was successfully deleted.' }
       format.json { head :no_content }
     end
   end
