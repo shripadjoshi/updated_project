@@ -2,6 +2,7 @@
   <legend>
     Edit Additional Claim for <a data-toggle="modal" href="#product-description"><%= @product.name.capitalize %></a> Product
    <%= render "shared/product_description", product: @product %>
+    <div class="right-align">Add Articles</div>
   </legend>
   <%= render "form", additional_claim: @additional_claim, product: @product, sub_claims: @sub_claims, assignees: @assignees, editors: @editors %>
 </fieldset>
