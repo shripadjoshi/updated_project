@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :name, :email, uniqueness: {case_sensitive: false}
+
+  has_many :reviews, dependent: :destroy
   scope :include_user_roles, include: [:roles]
   scope :alphabetical, self.order(:name)
   scope :all_users, self.alphabetical

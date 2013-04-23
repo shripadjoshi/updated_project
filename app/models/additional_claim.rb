@@ -16,6 +16,8 @@ class AdditionalClaim < ActiveRecord::Base
   has_many :additional_claim_sub_claims, dependent: :destroy
   has_many :sub_claims, through: :additional_claim_sub_claims
 
+  has_many :reviews, as: :reviewable, dependent: :destroy
+
   validates :master_claim_id, :claim_type, :research_status, presence: true
   validates :assigned_to, presence: true, if: :status_other_then_unassigned?
   validate :status_is_unassigned

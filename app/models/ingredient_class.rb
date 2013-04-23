@@ -4,6 +4,7 @@ class IngredientClass < ActiveRecord::Base
   mount_uploader :avatar2, ImageUploader
   mount_uploader :avatar3, ImageUploader
 
+  has_many :reviews, dependent: :destroy
   validates :class_name, presence: true, uniqueness: {case_sensitive: false}
 
   def as_xls(options = {})
