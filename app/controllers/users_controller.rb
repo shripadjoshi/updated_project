@@ -3,9 +3,10 @@ class UsersController < ApplicationController
 
   def index
     @roles = Role.all
-    @users = params[:search] ?
-                User.include_user_roles.search(params[:search], star: true).paginate(page: params[:page], per_page: 10) :
-                User.include_user_roles.paginate(page: params[:page], per_page: 10)
+    users = User.include_user_roles
+    @users = (params[:search] ?
+                users.search(params[:search], star: true) :
+                users).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html
       format.xls { send_data @users.to_xls, content_type: 'application/vnd.ms-excel', filename: 'users.xls' }
