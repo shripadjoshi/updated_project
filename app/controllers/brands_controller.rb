@@ -44,10 +44,13 @@ class BrandsController < ApplicationController
   end
 
   def destroy
-    @brand = Brand.find(params[:id])
-    @brand.destroy
+    @brand = Brand.find(params[:id])    
     respond_to do |format|
-     format.html { redirect_to brands_path, notice: "Brand was successfully deleted."}
+      products = @brand.products
+      master_claims = @brand.master_claims
+      present_or_not = products.present? || master_claims.present?
+      notice_val = object_delete_check({main_obj: @brand, "relational_objs" => {"obj1"=> products, "obj2" => master_claims}, conditional_check: present_or_not})
+      format.html { redirect_to brands_path, notice: notice_val}
     end
   end
 end

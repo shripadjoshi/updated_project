@@ -3,6 +3,9 @@
 ruby_string="ruby-1.9.3-p194"
 gemset_name="claims"
 
+#ruby_string="ruby-1.9.3-p392"
+#gemset_name="claims"
+
 if rvm list strings | grep -q "${ruby_string}" ; then
 
   # Load or create the specified environment

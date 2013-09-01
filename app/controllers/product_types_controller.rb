@@ -42,9 +42,11 @@ class ProductTypesController < ApplicationController
   end
 
   def destroy
-    @product_type.destroy
+    products = @product_type.products
+    present_or_not = products.present?
+    notice_val = object_delete_check({main_obj: @product_type, "relational_objs" => {"obj1"=> products}, conditional_check: present_or_not})
     respond_to do |format|
-     format.html { redirect_to product_types_path, notice: "Product type was successfully deleted."}
+     format.html { redirect_to product_types_path, notice: notice_val}
     end
   end
 

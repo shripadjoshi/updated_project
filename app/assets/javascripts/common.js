@@ -70,7 +70,7 @@ $("#additional_claim_claim_type").live("change", function(){
         type : "GET",
         data : { claim_type : $(this).val()},
         success: function(data) {
-            change_assignee_label();
+            //change_assignee_label();
             $(".dvLoading").hide();
         }
     });
