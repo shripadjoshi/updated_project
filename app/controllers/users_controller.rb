@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @roles = Role.all
     users = User.include_user_roles
     @users = (params[:search] ?
-                users.search(params[:search], star: true) :
+                users.search(params[:search], include: [:roles], star: true) :
                 users).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html

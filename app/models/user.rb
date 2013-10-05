@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   def user_roles
     #return self.roles.first.name.capitalize
     #return self.roles.collect(&:name).join(", ")
-    return self.roles.collect{|role| role.name.capitalize}.join(", ")
+    return roles.collect{|role| role.name.capitalize}.join(", ")
   end
 
   def active_for_authentication?

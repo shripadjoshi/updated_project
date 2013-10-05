@@ -47,7 +47,7 @@ gem "spreadsheet"
 gem "to_xls", git: "https://github.com/dblock/to_xls.git", branch: "to-xls-on-models"
 gem "passenger", group: [:development]
 gem 'carrierwave'
-#gem 'rmagick'
+gem 'rmagick'
 gem "rails_best_practices", group: [:development]
 gem "bullet", group: [:development]
 gem 'tinymce-rails'
